@@ -1,22 +1,29 @@
-from flask import Flask, render_template, jsonify
+from flask import Flask, render_template, redirect, url_for
 
 app = Flask(__name__)
 
-
-@app.route("/")
+@app.route('/')
 def hello_world():
   return render_template('home.html')
 
-@app.route('/')
-def home():
-    dropdown_options = ['Option 1', 'Option 2', 'Option 3', 'Option 4', 'Option 5']
-    return render_template('home.html', dropdown_options=dropdown_options)
+@app.route('/beverage')
+def beverage():
+  return render_template('beverage.html')
+
+@app.route('/salads')
+def salads():
+  return render_template('salads.html')
+
+@app.route('/pastas')
+def pastas():
+  return render_template('pastas.html')
+
+@app.route('/steaks')
+def steaks():
+  return render_template('steaks.html')
 
 
-# @app.route('/search')
-# def search():
- # query = request.args.get('query')
- # return render_template('search_results.html')
+
 
 
 if __name__ == '__main__':
