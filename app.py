@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for
+from flask import Flask, render_template, redirect, url_for, request
 
 app = Flask(__name__)
 
@@ -22,7 +22,35 @@ def pastas():
 def steaks():
   return render_template('steaks.html')
 
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        # Get the form data
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Perform validation and authentication logic here
+        # For example, check if the username and password are correct
+        
+        # Redirect to the home page after successful login
+        return redirect('/')
+    
+    return render_template('login.html')
 
+@app.route('/signup', methods=['GET', 'POST'])
+def signup():
+    if request.method == 'POST':
+        # Get the form data
+        username = request.form['username']
+        password = request.form['password']
+        
+        # Perform validation and account creation logic here
+        # For example, check if the username is available and create a new user account
+        
+        # Redirect to the home page after successful signup
+        return redirect('/')
+    
+    return render_template('signup.html')
 
 
 
